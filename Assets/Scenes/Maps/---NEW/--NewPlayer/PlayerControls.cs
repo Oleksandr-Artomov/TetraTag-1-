@@ -9,8 +9,6 @@ public class PlayerControls
 
     public PlayerControls(PlayerInput input)
     {
-        playerInput = input;
-        Move = playerInput.actions["Move"];
-        Jump = playerInput.actions["Jump"];
+
     }
 }
