@@ -19630,6 +19630,7 @@ GameObject:
   - component: {fileID: 3054942120541986095}
   - component: {fileID: 3054942120541986088}
   - component: {fileID: 3054942120541986089}
+  - component: {fileID: 5705313811684594786}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -19685,13 +19686,69 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 3054942120541986084}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: a081f785d315a2b43966f129ce852878, type: 2}
+  m_Material: {fileID: 6200000, guid: c87b5ba6fe273a94ea90cf3cfb7649e1, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.7}
   m_Size: {x: 0.8, y: 0.6}
   m_Direction: 1
+--- !u!114 &5705313811684594786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3054942120541986084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a8ee3285e3e9cf40b91eb4c68a0f8f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeviceID: -1
+  controls:
+    isHoldingLeft: 0
+    isHoldingRight: 0
+    isHoldingJump: 0
+    dashButton: 7
+    jumpButton: 6
+    thisFrame:
+      leftPressed: 0
+      rightPressed: 0
+      jumpPressed: 0
+      dashPressed: 0
+      jumpReleased: 0
+      leftReleased: 0
+      rightReleased: 0
+    <TimeOfDash>k__BackingField: 0
+  movementValues:
+    jumpValues:
+      jumpForce: 0
+      maxAirTime: 0
+      jumpBuffer: 0.05
+      slidingJumpForceReduction: 0.5
+      fallGravityScale: 0.08
+      turnAroundMomentumDeduction: 0
+      jumpPerk: 1
+      doubleJump:
+        heightPercentage: 0.5
+        secondJumpAvailible: 0
+        secondJumpInUse: 0
+      validJumpPress: 0
+      jumpType: 0
+      airTime: 0
+      bufferTimer: 0
+      canJump: 0
+      appliedFallVelocity: 0
+    isFacingLeft: 0
+    isGrounded: 0
+    timeOfTurnAround: 0
+    moveSpeed: 0
+    maxSpeed: 0
+    airResistenace: 0
+    rigidbody: {fileID: 0}
+    spriteRenderer: {fileID: 0}
+  squishBoxes: []
 --- !u!1 &3054942120628204824
 GameObject:
   m_ObjectHideFlags: 0
