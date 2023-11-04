@@ -10,7 +10,7 @@ public struct MovementValues
     public JumpValues jumpValues;
 
     [ReadOnly] public bool isFacingLeft;
-    [ReadOnly] public bool isGrounded;
+    public bool IsGrounded { get => grounded.isGrounded; }
     public float timeOfTurnAround;
     public float moveSpeed;
     public float maxSpeed;
@@ -19,6 +19,7 @@ public struct MovementValues
 
     public Rigidbody2D rigidbody;
     public SpriteRenderer spriteRenderer;
+    public IsGrounded grounded;
 }
 
 public static class Movement
@@ -31,7 +32,7 @@ public static class Movement
     }
     public static void FixedUpdate(PlayerControls controls, ref MovementValues values)
     {
-        Jump.DoJump(ref values.jumpValues, values.rigidbody, values.isGrounded, controls.isHoldingJump);
+        Jump.DoJump(ref values.jumpValues, values.rigidbody, values.IsGrounded, controls.isHoldingJump);
         Move(ref values, controls);
     }
 
@@ -39,7 +40,7 @@ public static class Movement
     {
         TurnAround(controls, ref values);
         Jump.Update(ref values.jumpValues, controls.thisFrame.jumpPressed);
-        Jump.ValidateJump(ref values.jumpValues, controls, values.isGrounded);
+        Jump.ValidateJump(ref values.jumpValues, controls, values.IsGrounded);
     }
 
     private static void TurnAround(PlayerControls controls, ref MovementValues values)
@@ -84,7 +85,7 @@ public static class Movement
         if (controls.isHoldingLeft) speed *= -1f;
         speed *= Time.deltaTime;
 
-        if (!values.isGrounded)
+        if (!values.IsGrounded)
         {
             speed *= (1 - values.airResistenace);
         }

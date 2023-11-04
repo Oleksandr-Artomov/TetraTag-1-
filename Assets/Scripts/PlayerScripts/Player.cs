@@ -19,9 +19,9 @@ public class Player : Actor
     {
         Movement.FixedUpdate(controls, ref movementValues);
 
-        return;
-        //Implement Squi Boxes On Player Prefab
         if (Time.time - waitTime < 0.75f) return;
+        if (squishBoxes.Length == 0) return;
+
         if (!Array.TrueForAll(squishBoxes, s => s.IsTouching)) return;
 
         SystemManager.Get<PlayerManager>().OnPlayerSquished(this);

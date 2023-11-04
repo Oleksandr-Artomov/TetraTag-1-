@@ -29,8 +29,6 @@ public struct JumpValues
     public float maxAirTime;
     [Range(0.05f, 0.35f)] 
     public float jumpBuffer;
-    [Range(0.5f, 1f)]
-    public float slidingJumpForceReduction;
     [Range(0.08f, 0.3f)]
     public float fallGravityScale;
     [Range(0f, 0.99f)]

@@ -255,7 +255,7 @@ Transform:
   m_Children:
   - {fileID: 444863347}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &166197254
 MonoBehaviour:
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpawnPosition: {fileID: 444863347}
-  playerPrefab: {fileID: 4225705257796939351, guid: bc5b6cce1cc1fe0469308ec44ee40b81, type: 3}
+  playerPrefab: {fileID: 5705313811684594786, guid: a758f4c47c8e05242aa9c708a1c99374, type: 3}
   deviceIDs: 
 --- !u!1 &250372250
 GameObject:
@@ -825,7 +825,7 @@ GameObject:
   - component: {fileID: 888398857}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: Board
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1611,7 +1611,7 @@ PrefabInstance:
     - target: {fileID: 9017200534256755266, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: playerPrefab
       value: 
-      objectReference: {fileID: 4225705257796939351, guid: bc5b6cce1cc1fe0469308ec44ee40b81, type: 3}
+      objectReference: {fileID: 5705313811684594786, guid: a758f4c47c8e05242aa9c708a1c99374, type: 3}
     - target: {fileID: 9017200534256755266, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: actors.Array.size
       value: 0
@@ -1622,7 +1622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9017200534531234594, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9017200534531234594, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: m_LocalPosition.x
