@@ -157,16 +157,25 @@ public static class Jump
     {
         if (!isHoldingJump) return;
 
-        //if the player hasn't let go of jump before touhcing the ground exit
-        if (!values.canJump && rigidbody.velocity.y <= 0) return;
-        if (values.airTime >= values.maxAirTime) return;
+        // If the player hasn't let go of jump before touching the ground, exit
+        if (!values.canJump && rigidbody.velocity.y <= 0)
+        {
+            // Apply custom fall gravity scale
+            rigidbody.gravityScale = values.fallGravityScale;
+            return;
+        }
 
-        //if the player is grounded and hasn't reached the air time threshold increase his upwards veloicty at a diminishing rate
+        // If the player is grounded or hasn't reached the airtime threshold, increase their upward velocity at a diminishing rate
         if (isGrounded || values.airTime < values.maxAirTime)
+        {
             rigidbody.velocity = rigidbody.velocity.SetY(values.jumpForce);
+            // Reset gravity scale when jumping
+            rigidbody.gravityScale = 1.0f;
+        }
     }
 
-    
+
+
 
     public static void ResetJumpParameters(ref JumpValues values)
     {

@@ -15,7 +15,7 @@ public struct MovementValues
     public float moveSpeed;
     public float maxSpeed;
     [Range(0f, 1f)]
-    public float airResistenace;
+    public float airResistance;
 
     public Rigidbody2D rigidbody;
     public SpriteRenderer spriteRenderer;
@@ -30,6 +30,7 @@ public static class Movement
         Left,
         Right,
     }
+
     public static void FixedUpdate(PlayerControls controls, ref MovementValues values)
     {
         Jump.DoJump(ref values.jumpValues, values.rigidbody, values.IsGrounded, controls.isHoldingJump);
@@ -72,28 +73,27 @@ public static class Movement
 
     private static void Move(ref MovementValues values, PlayerControls controls)
     {
-        Vector2 current = values.rigidbody.transform.position;
         Vector2 currentVelocity = values.rigidbody.velocity;
 
-        float speed = 0;
-        if (controls.isHoldingRight || controls.isHoldingLeft)
-        {
-            speed = values.moveSpeed;
-        }
+        // Calculate horizontal movement
+        float horizontalInput = controls.isHoldingRight ? 1f : (controls.isHoldingLeft ? -1f : 0f);
+        float targetSpeed = horizontalInput * values.moveSpeed;
 
-
-        if (controls.isHoldingLeft) speed *= -1f;
-        speed *= Time.deltaTime;
-
+        // Apply air resistance if not grounded
         if (!values.IsGrounded)
         {
-            speed *= (1 - values.airResistenace);
+            targetSpeed *= (1 - values.airResistance);
         }
 
+        // Smoothly adjust the horizontal velocity
+        float smoothTime = 0.1f; // Adjust this value as needed
+        currentVelocity.x = Mathf.SmoothDamp(currentVelocity.x, targetSpeed, ref currentVelocity.x, smoothTime);
 
-        Vector2.SmoothDamp(current, current.OffsetX(speed), ref currentVelocity, Time.deltaTime);
-        currentVelocity.x = Mathf.Min(Mathf.Abs(currentVelocity.x), values.maxSpeed);
-        if (values.isFacingLeft) currentVelocity.x *= -1f;
-        values.rigidbody.velocity = values.rigidbody.velocity.SetX(currentVelocity.x);
+        // Limit the maximum speed
+        currentVelocity.x = Mathf.Clamp(currentVelocity.x, -values.maxSpeed, values.maxSpeed);
+
+        // Set the new velocity
+        values.rigidbody.velocity = currentVelocity;
     }
+
 }

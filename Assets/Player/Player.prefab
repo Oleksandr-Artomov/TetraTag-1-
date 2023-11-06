@@ -58,8 +58,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781945356731339367}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.34352, z: 0}
+  m_LocalScale: {x: 1, y: 3.675, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3054942120541986095}
@@ -19585,8 +19585,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3054942120376258709}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.016, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.159, z: 0}
+  m_LocalScale: {x: 1, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3054942121443606467}
@@ -19703,7 +19703,7 @@ GameObject:
   - component: {fileID: 3054942120541986095}
   - component: {fileID: 3054942120541986088}
   - component: {fileID: 5705313811684594786}
-  - component: {fileID: 822213445185802330}
+  - component: {fileID: 7252477590443359917}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -19719,7 +19719,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3054942120541986084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2.46}
+  m_LocalPosition: {x: 0, y: 0.20253, z: -2.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19744,13 +19744,13 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: c87b5ba6fe273a94ea90cf3cfb7649e1, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!114 &5705313811684594786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19782,13 +19782,13 @@ MonoBehaviour:
   movementValues:
     jumpValues:
       jumpForce: 4.5
-      maxAirTime: 0.35
-      jumpBuffer: 0.076
-      fallGravityScale: 0.2496
-      turnAroundMomentumDeduction: 0.526
+      maxAirTime: 0.08
+      jumpBuffer: 0.089
+      fallGravityScale: 0.109
+      turnAroundMomentumDeduction: 0.12
       jumpPerk: 1
       doubleJump:
-        heightPercentage: 0.85
+        heightPercentage: 0.5
         secondJumpAvailible: 0
         secondJumpInUse: 0
       validJumpPress: 0
@@ -19801,15 +19801,15 @@ MonoBehaviour:
     timeOfTurnAround: 0
     moveSpeed: 20
     maxSpeed: 25
-    airResistenace: 0.422
+    airResistance: 1.36
     rigidbody: {fileID: 3054942120541986088}
     spriteRenderer: {fileID: 3054942120714206837}
     grounded: {fileID: 3847637072645022329}
   squishBoxes:
   - {fileID: 6671723784836477820}
   - {fileID: 2361237484185551115}
---- !u!61 &822213445185802330
-BoxCollider2D:
+--- !u!58 &7252477590443359917
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -19821,19 +19821,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.69206965}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: 0.68}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.3603985}
-  m_EdgeRadius: 0
+  m_Radius: 0.5
 --- !u!1 &3054942120628204824
 GameObject:
   m_ObjectHideFlags: 0
@@ -34695,8 +34685,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4239773867792109808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0033515, y: 0.019, z: 0}
-  m_LocalScale: {x: 0.5, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.878, z: 0}
+  m_LocalScale: {x: 0.1725, y: 0.045, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3054942120541986095}
@@ -34897,8 +34887,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4930408646758490893}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.277, z: 0}
-  m_LocalScale: {x: 0.5, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.515, z: 0}
+  m_LocalScale: {x: 0.1725, y: 0.045, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3054942120541986095}
