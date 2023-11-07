@@ -70,6 +70,11 @@ public class PlayerManager : Manager
             }
         }
 
+        string str = "";
+        foreach (var id in playerIDs)
+            str += id.ToString() + " ";
+        print(str);
+
         if (playerIDs.Count < 2)
             return;
 
@@ -80,6 +85,7 @@ public class PlayerManager : Manager
             playerIDs[i] = playerIDs[i - 1];
         }
         playerIDs[0] = temp;
+       
 
         // Assign the rotated device IDs back to the players
         int playerIndex = 0;

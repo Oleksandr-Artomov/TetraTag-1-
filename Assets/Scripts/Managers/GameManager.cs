@@ -29,7 +29,7 @@ public class GameManager : Manager
     {
         if (CurrentState == state) return;
 
-        CurrentState = state;
+        currentState = state;
 
         switch (CurrentState)
         {
