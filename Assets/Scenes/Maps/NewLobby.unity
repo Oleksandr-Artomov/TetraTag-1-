@@ -1626,7 +1626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9017200534256755266, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: useKeyboardAsBoardPlayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9017200534531234594, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: m_RootOrder

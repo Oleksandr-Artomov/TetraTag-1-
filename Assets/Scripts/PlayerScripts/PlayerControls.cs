@@ -11,18 +11,17 @@ public class PlayerControls
     [Serializable]
     public struct ThisFrame
     {
-        [ReadOnly] public bool leftPressed;
-        [ReadOnly] public bool rightPressed;
+        [ReadOnly] public bool rightPressed;    // Up instead of left
+        [ReadOnly] public bool leftPressed;  // Down instead of right
         [ReadOnly] public bool jumpPressed;
         [ReadOnly] public bool dashPressed;
 
         [ReadOnly] public bool jumpReleased;
-        [ReadOnly] public bool leftReleased;
-        [ReadOnly] public bool rightReleased;
-
+        [ReadOnly] public bool rightReleased;    // Up instead of left
+        [ReadOnly] public bool leftReleased;  // Down instead of right
     }
-    [ReadOnly] public bool isHoldingLeft;
-    [ReadOnly] public bool isHoldingRight;
+    [ReadOnly] public bool isHoldingRight;     // Up instead of left
+    [ReadOnly] public bool isHoldingLeft;   // Down instead of right
     [ReadOnly] public bool isHoldingJump;
 
     public GamepadButton
@@ -32,7 +31,6 @@ public class PlayerControls
     [ReadOnly] public ThisFrame thisFrame;
     [field: SerializeField, ReadOnly] public float TimeOfDash { get; private set; }
 }
-
 
 public static class InputHandler
 {
@@ -46,27 +44,27 @@ public static class InputHandler
                 {
                     gamepad = pad;
                     break;
-                }       
+                }
         }
 
         if (gamepad is null) return;
 
-        controls.thisFrame.leftPressed = !controls.isHoldingLeft && gamepad.dpad.left.wasPressedThisFrame || gamepad.leftStick.left.wasPressedThisFrame;
-        controls.thisFrame.rightPressed = !controls.isHoldingRight && gamepad.dpad.right.isPressed || gamepad.leftStick.right.isPressed;
+        controls.thisFrame.rightPressed = !controls.isHoldingRight && gamepad.dpad.up.wasPressedThisFrame || gamepad.leftStick.up.wasPressedThisFrame;   // Up instead of left
+        controls.thisFrame.leftPressed = !controls.isHoldingLeft && gamepad.dpad.down.isPressed || gamepad.leftStick.down.isPressed; // Down instead of right
 
         controls.thisFrame.dashPressed = gamepad[controls.dashButton].wasPressedThisFrame;
         controls.thisFrame.jumpPressed = gamepad[controls.jumpButton].wasPressedThisFrame;
 
-        controls.isHoldingLeft = gamepad.dpad.left.isPressed || gamepad.leftStick.left.isPressed;
-        controls.isHoldingRight = gamepad.dpad.right.isPressed || gamepad.leftStick.right.isPressed;
+        controls.isHoldingRight = gamepad.dpad.up.isPressed || gamepad.leftStick.up.isPressed;   // Up instead of left
+        controls.isHoldingLeft = gamepad.dpad.down.isPressed || gamepad.leftStick.down.isPressed; // Down instead of right
         controls.isHoldingJump = gamepad[controls.jumpButton].isPressed;
 
-        if (controls.isHoldingLeft && controls.thisFrame.rightPressed) controls.isHoldingLeft = false;
-        if (controls.isHoldingRight && controls.thisFrame.leftPressed) controls.isHoldingRight = false;
+        if (controls.isHoldingRight && controls.thisFrame.leftPressed) controls.isHoldingRight = false;     // Up instead of left
+        if (controls.isHoldingLeft && controls.thisFrame.rightPressed) controls.isHoldingLeft = false; // Down instead of right
 
         controls.thisFrame.jumpReleased = gamepad[controls.jumpButton].wasReleasedThisFrame;
-        controls.thisFrame.leftReleased = gamepad.dpad.left.wasReleasedThisFrame || gamepad.leftStick.left.wasPressedThisFrame;
-        controls.thisFrame.rightReleased = gamepad.dpad.right.wasReleasedThisFrame || gamepad.leftStick.right.wasPressedThisFrame;
+        controls.thisFrame.rightReleased = gamepad.dpad.up.wasReleasedThisFrame || gamepad.leftStick.up.wasPressedThisFrame;   // Up instead of left
+        controls.thisFrame.leftReleased = gamepad.dpad.down.wasReleasedThisFrame || gamepad.leftStick.down.wasPressedThisFrame; // Down instead of right
 
         if (controls.thisFrame.jumpReleased)
             canJump = true;
