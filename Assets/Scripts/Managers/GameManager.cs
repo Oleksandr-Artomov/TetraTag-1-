@@ -57,8 +57,14 @@ public class GameManager : Manager
             currentLevel = 0;
 
         print("Board Player Wins");
+
+        // Switch roles before loading the scene
+        var playerManager = SystemManager.Get<PlayerManager>();
+        playerManager.Switch();
+
         SwitchScene();
     }
+
 
     public void OnPlayersWin()
     {
@@ -67,8 +73,8 @@ public class GameManager : Manager
     }
 
     void SwitchScene()
-    {  
-        SceneManager.LoadScene(levels[currentLevel].SceneName);  
+    {
+        SceneManager.LoadScene(levels[currentLevel].SceneName);
     }
 
     private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
@@ -78,7 +84,13 @@ public class GameManager : Manager
         var playerManager = SystemManager.Get<PlayerManager>();
 
         playerManager.OnGameStart();
-        playerManager.Switch();
+        playerManager.Switch(); // This line switches roles.
+
+        playerManager.OnAllPlayersSquished.AddListener(() =>
+        {
+            // Call the Switch method to switch roles when all players are squished in the new scene.
+            playerManager.Switch();
+        });
     }
 }
 

@@ -51,28 +51,48 @@ public class PlayerManager : Manager
             player.DeviceID = devices[i].deviceId;
             actors.Add(player);
         }
+        Debug.Log("Number of actors: " + actors.Count);
     }
 
     public void Switch()
     {
-        List<int> ids = new List<int>();
+        if (actors.Count <= 1)
+            return;
 
+        List<int> playerIDs = new List<int>();
 
-        foreach (var player in actors)
+        // Collect all player device IDs except the board
+        foreach (var actor in actors)
         {
-            if (player.DeviceID != -1)
-                ids.Add(player.DeviceID);
+            if (actor != board && actor.DeviceID != -1)
+            {
+                playerIDs.Add(actor.DeviceID);
+            }
         }
-            
 
-        for (int i = 0, j = 0; i < actors.Count; i++)
+        if (playerIDs.Count < 2)
+            return;
+
+        // Rotate the player device IDs to switch roles
+        int temp = playerIDs[playerIDs.Count - 1];
+        for (int i = playerIDs.Count - 1; i > 0; i--)
         {
-            if (useKeyboardAsBoardPlayer && actors[i] == board) continue;
-            actors[i].DeviceID = ids[(j + 1) % ids.Count];
-            ++j;
+            playerIDs[i] = playerIDs[i - 1];
         }
-            
+        playerIDs[0] = temp;
+
+        // Assign the rotated device IDs back to the players
+        int playerIndex = 0;
+        foreach (var actor in actors)
+        {
+            if (actor != board)
+            {
+                actor.DeviceID = playerIDs[playerIndex];
+                playerIndex++;
+            }
+        }
     }
+
 
     public void OnPlayerSquished(Player player)
     {
@@ -80,7 +100,6 @@ public class PlayerManager : Manager
         ++playersSquished;
         if (playersSquished == actors.Count - 1)
             OnAllPlayersSquished?.Invoke();
-
     }
    
     public void PlayerEscaped(Player player)
@@ -89,3 +108,11 @@ public class PlayerManager : Manager
         OnPlayerEscaped?.Invoke();
     }
 }
+
+
+
+
+
+
+
+

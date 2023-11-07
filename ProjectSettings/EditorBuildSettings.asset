@@ -5,79 +5,82 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/Maps/Lobby.unity
-    guid: 1627b023436078b48ae53b29381e07fa
-  - enabled: 1
+  - enabled: 0
     path: 
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: 
-    guid: f60ef09ae40a1f54aaae3659a72b5917
-  - enabled: 1
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: 
-    guid: 1e5631b509348d54ea2f316f406f4a95
-  - enabled: 1
-    path: Assets/Scenes/Maps/Tetra.unity
-    guid: d59359d395bda2147b4f999b0c38f290
-  - enabled: 1
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: 
-    guid: ae2d35b143a216c44ba7977ba2301ef6
-  - enabled: 1
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: 
-    guid: 27c366a33b8ddfb4f928da39dff7c7fe
-  - enabled: 1
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: 
-    guid: c98b99450ac9b7b44aee366c16847631
-  - enabled: 1
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: 
-    guid: bc72baecb5d283243bc4bb3ed69de81d
-  - enabled: 1
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: 
-    guid: 120be24047b6b70428a6fe203ec73e8e
-  - enabled: 1
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: 
-    guid: 4b7b9d5ad8d2eb84caa672a5fc956bd2
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Maps/Tetra 1.unity
     guid: d08bde62ad161314baf26967dc5bb53e
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Maps/Tetra 2.unity
-    guid: 9ef2140389e9ec34f8d48df8578dce00
-  - enabled: 1
-    path: Assets/Scenes/Maps/Tetra 3.unity
-    guid: 7bd49c792f9d80346a696f8e391770a7
-  - enabled: 1
-    path: Assets/Scenes/Maps/Tetra 4.unity
-    guid: 219b0d3d2c13bae43b7970f520fc573d
-  - enabled: 1
-    path: Assets/Scenes/Maps/Tetra 5.unity
-    guid: 8bb6efd7f266b1f40bd90c585e22d270
-  - enabled: 1
-    path: Assets/Scenes/Maps/Tetra 6.unity
-    guid: c36b852eece90ab4ba5f9f741fe34e70
-  - enabled: 1
-    path: Assets/Scenes/Maps/Tetra 7.unity
-    guid: 39d8ed01843e5a746849812e2b798924
-  - enabled: 1
-    path: Assets/Scenes/Maps/Tetra 8.unity
-    guid: 1f8461110cba7ab4697e9e8885c88bed
-  - enabled: 1
-    path: Assets/Scenes/Maps/Tetra 9.unity
-    guid: 7a4c314c2fe03c441b4bfbfd37cf05be
-  - enabled: 1
-    path: Assets/Scenes/Maps/Tetra 10.unity
-    guid: 99b8024317ce97141a52e92ea6787665
-  - enabled: 1
-    path: Assets/Scenes/Maps/Tetra 11.unity
-    guid: 407ae514b77de82429474c9b410eeca3
-  - enabled: 1
-    path: Assets/Scenes/Maps/Tetra 12.unity
-    guid: b888aae5cf32b9a449100a776853f1fa
-  - enabled: 1
-    path: Assets/Scenes/Maps/Tetra 13.unity
-    guid: a48790db13c41ef4bbbe77d77b2220d8
-  - enabled: 1
-    path: Assets/Scenes/Maps/Tetra 14.unity
-    guid: 2825918c0e7199444af4015235cd85ae
+    path: Assets/Scenes/Maps/NewLobby.unity
+    guid: 3a6d8252277a0ef4c94d6446e5b680c7
   m_configObjects: {}

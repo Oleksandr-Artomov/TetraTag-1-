@@ -17,10 +17,24 @@ public class Piece : MonoBehaviour
 
     private float stepTime;
     private float moveTime;
-    private float lockTime; //Block is placed ---------
+    public float lockTime; //Block is placed ---------
+
+    private float timeElapsed = 0f;
+    private float timeSinceLastDebug = 0f;
+
+    private bool isSoftDropping = false; // Flag to track soft drop
+
+    public float speedIncreaseRate = 0.03f; // Adjust this rate for your desired speed increase (3% increase per second)
+
+
+    private float lastDroppedPieceStepDelay; // Store the stepDelay of the last dropped piece
+
 
     public void Initialize(Board board, Vector3Int position, TetrominoData data)
     {
+        // Set the stepDelay to the value of the last dropped piece
+
+
         this.data = data;
         this.board = board;
         this.position = position;
@@ -84,10 +98,29 @@ public class Piece : MonoBehaviour
     {
         board.Clear(this);
 
+        // Check if it's time to increase the speed
+        // Update the time elapsed
+        timeElapsed += Time.deltaTime;
+
+        // Lower the stepDelay to increase falling speed, even when soft dropping
+        stepDelay -= speedIncreaseRate * Time.deltaTime;
+
+        // Ensure stepDelay doesn't go below a minimum value
+        stepDelay = Mathf.Max(stepDelay, 0.1f); // Adjust the minimum value as needed
+
+        // Display the current piece falling speed every second
+        timeSinceLastDebug += Time.deltaTime;
+
         // We use a timer to allow the player to make adjustments to the piece
         // before it locks in place
         lockTime += Time.deltaTime;
         var inputs = HandleInputs();
+
+        if (inputs.softDrop)
+        {
+            isSoftDropping = true;
+        }
+
         // Handle rotation
         if (inputs.leftRotate)
         {
@@ -98,24 +131,20 @@ public class Piece : MonoBehaviour
             Rotate(1);
         }
 
-        // Handle hard drop-------------
-
-        /*if (inputs.hardDrop)
-        {
-            HardDrop();
-        }*/
+        // Handle hard drop
 
         // Allow the player to hold movement keys but only after a move delay
         // so it does not move too fast
         if (Time.time > moveTime)
         {
-            if (inputs.softDrop)
+            if (isSoftDropping && inputs.softDrop)
             {
                 if (Move(Vector2Int.down))
                 {
                     // Update the step time to prevent double movement
                     stepTime = Time.time + stepDelay;
                 }
+                isSoftDropping = true;
             }
 
             if (inputs.hardDrop)
@@ -142,6 +171,19 @@ public class Piece : MonoBehaviour
         if (Time.time > stepTime)
         {
             Step();
+        }
+
+        // Check if it's time to increase the speed
+        // Update the time elapsed only if not in a soft drop
+        if (isSoftDropping == false)
+        {
+            timeElapsed += Time.deltaTime;
+
+            // Lower the stepDelay to increase falling speed
+            stepDelay -= speedIncreaseRate * Time.deltaTime;
+
+            // Ensure stepDelay doesn't go below a minimum value
+            stepDelay = Mathf.Max(stepDelay, 0.1f); // Adjust the minimum value as needed
         }
 
         board.Set(this);
@@ -182,6 +224,9 @@ public class Piece : MonoBehaviour
         board.Set(this);
         board.ClearLines();
         board.SpawnPiece();
+
+        // Store the stepDelay of the last dropped piece
+        lastDroppedPieceStepDelay = stepDelay;
     }
 
     private bool Move(Vector2Int translation)

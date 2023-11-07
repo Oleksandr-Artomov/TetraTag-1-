@@ -1630,7 +1630,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stepDelay: 1
   moveDelay: 0.1
-  lockDelay: 1e-11
+  lockDelay: 0.03
+  lockTime: 0
+  speedIncreaseRate: 0.009
 --- !u!114 &1820771109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1725,7 +1727,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1872176066
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1965,7 +1967,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9017200534256755266, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: useKeyboardAsBoardPlayer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9017200534531234594, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: m_RootOrder

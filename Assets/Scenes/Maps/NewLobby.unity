@@ -1345,6 +1345,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 9017200533352519794, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
+      propertyPath: lobbyScene.Scene
+      value: 
+      objectReference: {fileID: 102900000, guid: 3a6d8252277a0ef4c94d6446e5b680c7, type: 3}
+    - target: {fileID: 9017200533352519794, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: levels.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1353,8 +1357,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9017200533352519794, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
+      propertyPath: lobbyScene.SceneName
+      value: NewLobby
+      objectReference: {fileID: 0}
+    - target: {fileID: 9017200533352519794, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: lobbyScene.sceneIndex
-      value: 0
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 9017200533352519794, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: levels.Array.data[0].Scene
@@ -1618,7 +1626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9017200534256755266, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: useKeyboardAsBoardPlayer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9017200534531234594, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: m_RootOrder
