@@ -16,7 +16,8 @@ public class PlayerManager : Manager
     [HideInInspector] public UnityEvent OnPlayerEscaped;
 
     int playersSquished;
-    
+
+    int round = 0;
 
     [SerializeField, DisplayInspector] List<Actor> actors = new List<Actor>();
 
@@ -30,13 +31,20 @@ public class PlayerManager : Manager
 
         if (useKeyboardAsBoardPlayer) SetUp(devices, 0);
         else NormalStart(devices);
+
     }
 
     void NormalStart(ReadOnlyArray<InputDevice> devices)
     {
         int i = System.Array.FindIndex(devices.ToArray(), d => d is Gamepad);
         board.DeviceID = devices[i++].deviceId;
-        SetUp(devices, i);   
+        SetUp(devices, i);
+
+        round++;    
+        for(int j = 0; j < round; j++)
+        {
+            Switch();
+        }
     }
 
     void SetUp(ReadOnlyArray<InputDevice> devices, int i = 0)
@@ -56,49 +64,21 @@ public class PlayerManager : Manager
 
     public void Switch()
     {
-        if (actors.Count <= 1)
-            return;
+        List<int> ids = new List<int>();
 
-        List<int> playerIDs = new List<int>();
-
-        // Collect all player device IDs except the board
-        foreach (var actor in actors)
+        foreach (var player in actors)
         {
-            if (actor != board && actor.DeviceID != -1)
-            {
-                playerIDs.Add(actor.DeviceID);
-            }
+            if (player.DeviceID != -1)
+                ids.Add(player.DeviceID);
         }
 
-        string str = "";
-        foreach (var id in playerIDs)
-            str += id.ToString() + " ";
-        print(str);
-
-        if (playerIDs.Count < 2)
-            return;
-
-        // Rotate the player device IDs to switch roles
-        int temp = playerIDs[playerIDs.Count - 1];
-        for (int i = playerIDs.Count - 1; i > 0; i--)
+        for (int i = 0, j = 0; i < actors.Count; i++)
         {
-            playerIDs[i] = playerIDs[i - 1];
-        }
-        playerIDs[0] = temp;
-       
-
-        // Assign the rotated device IDs back to the players
-        int playerIndex = 0;
-        foreach (var actor in actors)
-        {
-            if (actor != board)
-            {
-                actor.DeviceID = playerIDs[playerIndex];
-                playerIndex++;
-            }
+            if (useKeyboardAsBoardPlayer && actors[i] == board) continue;
+            actors[i].DeviceID = ids[(j + 1) % ids.Count];
+            ++j;
         }
     }
-
 
     public void OnPlayerSquished(Player player)
     {
@@ -106,6 +86,8 @@ public class PlayerManager : Manager
         ++playersSquished;
         if (playersSquished == actors.Count - 1)
             OnAllPlayersSquished?.Invoke();
+
+
     }
    
     public void PlayerEscaped(Player player)

@@ -49,22 +49,22 @@ public static class InputHandler
 
         if (gamepad is null) return;
 
-        controls.thisFrame.rightPressed = !controls.isHoldingRight && gamepad.dpad.up.wasPressedThisFrame || gamepad.leftStick.up.wasPressedThisFrame;   // Up instead of left
-        controls.thisFrame.leftPressed = !controls.isHoldingLeft && gamepad.dpad.down.isPressed || gamepad.leftStick.down.isPressed; // Down instead of right
+        controls.thisFrame.rightPressed = !controls.isHoldingRight && gamepad.dpad.right.wasPressedThisFrame || gamepad.leftStick.right.wasPressedThisFrame;   // Up instead of left
+        controls.thisFrame.leftPressed = !controls.isHoldingLeft && gamepad.dpad.left.isPressed || gamepad.leftStick.left.isPressed; // Down instead of right
 
         controls.thisFrame.dashPressed = gamepad[controls.dashButton].wasPressedThisFrame;
         controls.thisFrame.jumpPressed = gamepad[controls.jumpButton].wasPressedThisFrame;
 
-        controls.isHoldingRight = gamepad.dpad.up.isPressed || gamepad.leftStick.up.isPressed;   // Up instead of left
-        controls.isHoldingLeft = gamepad.dpad.down.isPressed || gamepad.leftStick.down.isPressed; // Down instead of right
+        controls.isHoldingRight = gamepad.dpad.right.isPressed || gamepad.leftStick.right.isPressed;   // Up instead of left
+        controls.isHoldingLeft = gamepad.dpad.left.isPressed || gamepad.leftStick.left.isPressed; // Down instead of right
         controls.isHoldingJump = gamepad[controls.jumpButton].isPressed;
 
         if (controls.isHoldingRight && controls.thisFrame.leftPressed) controls.isHoldingRight = false;     // Up instead of left
         if (controls.isHoldingLeft && controls.thisFrame.rightPressed) controls.isHoldingLeft = false; // Down instead of right
 
         controls.thisFrame.jumpReleased = gamepad[controls.jumpButton].wasReleasedThisFrame;
-        controls.thisFrame.rightReleased = gamepad.dpad.up.wasReleasedThisFrame || gamepad.leftStick.up.wasPressedThisFrame;   // Up instead of left
-        controls.thisFrame.leftReleased = gamepad.dpad.down.wasReleasedThisFrame || gamepad.leftStick.down.wasPressedThisFrame; // Down instead of right
+        controls.thisFrame.rightReleased = gamepad.dpad.right.wasReleasedThisFrame || gamepad.leftStick.right.wasPressedThisFrame;   // Up instead of left
+        controls.thisFrame.leftReleased = gamepad.dpad.left.wasReleasedThisFrame || gamepad.leftStick.left.wasPressedThisFrame; // Down instead of right
 
         if (controls.thisFrame.jumpReleased)
             canJump = true;

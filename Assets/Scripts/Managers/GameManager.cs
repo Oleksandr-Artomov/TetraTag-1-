@@ -68,7 +68,7 @@ public class GameManager : Manager
 
     void SwitchScene()
     {  
-        SceneManager.LoadScene(levels[currentLevel].SceneName);  
+        SceneManager.LoadScene(levels[currentLevel].SceneName);
     }
 
     private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
@@ -77,14 +77,14 @@ public class GameManager : Manager
 
         var playerManager = SystemManager.Get<PlayerManager>();
 
-        playerManager.OnGameStart();
-        playerManager.Switch(); // This line switches roles.
-
-        playerManager.OnAllPlayersSquished.AddListener(() =>
+        if (playerManager != null)
         {
-            // Call the Switch method to switch roles when all players are squished in the new scene.
-            playerManager.Switch();
-        });
+            playerManager.OnGameStart();
+        }
+        else
+        {
+            Debug.LogError("PlayerManager not found or not accessible.");
+        }
     }
 }
 

@@ -19781,14 +19781,14 @@ MonoBehaviour:
     <TimeOfDash>k__BackingField: 0
   movementValues:
     jumpValues:
-      jumpForce: 4.5
+      jumpForce: 5.32
       maxAirTime: 0.08
       jumpBuffer: 0.089
       fallGravityScale: 0.109
       turnAroundMomentumDeduction: 0.12
       jumpPerk: 1
       doubleJump:
-        heightPercentage: 0.5
+        heightPercentage: 0.62
         secondJumpAvailible: 0
         secondJumpInUse: 0
       validJumpPress: 0
@@ -19821,9 +19821,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.68}
+  m_Offset: {x: 0, y: 0.61128384}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.43128377
 --- !u!1 &3054942120628204824
 GameObject:
   m_ObjectHideFlags: 0
