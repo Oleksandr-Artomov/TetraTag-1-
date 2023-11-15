@@ -83,4 +83,52 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Maps/NewLobby.unity
     guid: 3a6d8252277a0ef4c94d6446e5b680c7
+  - enabled: 1
+    path: 
+    guid: 8afcf7553c7a4d647ad11f07c6fd399f
+  - enabled: 1
+    path: 
+    guid: 5acffd891d2561447baca96fad658471
+  - enabled: 1
+    path: 
+    guid: 257878167fe27d7409f0e5b8f2124af3
+  - enabled: 1
+    path: 
+    guid: a867c1df50ded094f857d12402a2537b
+  - enabled: 1
+    path: Assets/Scenes/Maps/ORIGINAL.unity
+    guid: 021a53c8dab0d1b4a8726829482434fe
+  - enabled: 1
+    path: Assets/Scenes/Maps/Tetra 2.unity
+    guid: bea80bc4f27bbe440aeaf522e8e9dc0e
+  - enabled: 1
+    path: Assets/Scenes/Maps/Tetra 3.unity
+    guid: acc5e639c3c83194a8e14b23f4af62c3
+  - enabled: 1
+    path: Assets/Scenes/Maps/Tetra 4.unity
+    guid: 6ae548c3e7d14a045830ff98f589abfb
+  - enabled: 1
+    path: Assets/Scenes/Maps/Tetra 5.unity
+    guid: 18e0c49ca0b89ae4ca1dbd96d13c9c7c
+  - enabled: 1
+    path: Assets/Scenes/Maps/Tetra 6.unity
+    guid: 5f7e8953f07eec7408ceaf89dc720477
+  - enabled: 1
+    path: Assets/Scenes/Maps/Tetra 7.unity
+    guid: aec15207386a4b04e8740247f9acb7f7
+  - enabled: 1
+    path: Assets/Scenes/Maps/Tetra 8.unity
+    guid: f0c338715232e454abf484a4f0d0a922
+  - enabled: 1
+    path: Assets/Scenes/Maps/Tetra 9.unity
+    guid: 26e68c7f296fe2144801ab92e971b27f
+  - enabled: 1
+    path: Assets/Scenes/Maps/Tetra 10.unity
+    guid: a1640be81d0336c4cb881e2b57e4aa49
+  - enabled: 1
+    path: Assets/Scenes/Maps/Tetra 11.unity
+    guid: 105fc7cf2c703a646a457d4fb2995e2e
+  - enabled: 1
+    path: Assets/Scenes/Maps/Tetra 12.unity
+    guid: 6c69b60c1504b7f4b81fc76758c9efd7
   m_configObjects: {}
