@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1969292109115252591}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 7866872819013162064}
   - component: {fileID: 3847637072645022329}
   - component: {fileID: 5571994160054483611}
-  m_Layer: 7
+  m_Layer: 4
   m_Name: IsGrounded
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 3054942119778330325}
   - component: {fileID: 3054942119778330331}
   - component: {fileID: 3054942119778330324}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Double Jump Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4986,7 +4986,7 @@ GameObject:
   - component: {fileID: 3054942119837435223}
   - component: {fileID: 3054942119837435221}
   - component: {fileID: 3054942119837435222}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Move Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9798,7 +9798,7 @@ GameObject:
   - component: {fileID: 3054942119893454497}
   - component: {fileID: 3054942119893454503}
   - component: {fileID: 3054942119893454496}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Jump Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14669,7 +14669,7 @@ GameObject:
   - component: {fileID: 3054942120025842299}
   - component: {fileID: 3054942120025842297}
   - component: {fileID: 3054942120025842298}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: DashRing Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19537,7 +19537,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3054942120045712701}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Dash Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19570,7 +19570,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3054942120376258708}
   - component: {fileID: 3054942120376258714}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19704,7 +19704,7 @@ GameObject:
   - component: {fileID: 3054942120541986088}
   - component: {fileID: 5705313811684594786}
   - component: {fileID: 6643836885522344794}
-  m_Layer: 7
+  m_Layer: 4
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19833,7 +19833,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3054942120628204831}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19873,7 +19873,7 @@ GameObject:
   - component: {fileID: 3054942120714206839}
   - component: {fileID: 3054942120714206837}
   - component: {fileID: 3054942120714206838}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19978,7 +19978,7 @@ GameObject:
   - component: {fileID: 3054942120786680126}
   - component: {fileID: 3054942120786680124}
   - component: {fileID: 3054942120786680125}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Dash Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24790,7 +24790,7 @@ GameObject:
   - component: {fileID: 3054942121060292282}
   - component: {fileID: 3054942121060292280}
   - component: {fileID: 3054942121060292281}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Launch Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29660,7 +29660,7 @@ GameObject:
   - component: {fileID: 3054942121100908043}
   - component: {fileID: 3054942121100908041}
   - component: {fileID: 3054942121100908042}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Land Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34529,7 +34529,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3054942121443606467}
   - component: {fileID: 3054942121443606466}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: TrailRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34670,7 +34670,7 @@ GameObject:
   - component: {fileID: 1502181291807257603}
   - component: {fileID: 2064792951272803353}
   - component: {fileID: 6671723784836477820}
-  m_Layer: 7
+  m_Layer: 4
   m_Name: SquishTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34685,7 +34685,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4239773867792109808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.03, z: 0}
+  m_LocalPosition: {x: 0, y: 0.73, z: 0}
   m_LocalScale: {x: 0.1725, y: 0.045, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -34743,7 +34743,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4932264274632542143}
   - component: {fileID: 5970203659758147100}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: WallClimbSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34872,7 +34872,7 @@ GameObject:
   - component: {fileID: 2745669345409774834}
   - component: {fileID: 6177502754650714679}
   - component: {fileID: 2361237484185551115}
-  m_Layer: 7
+  m_Layer: 4
   m_Name: SquishBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34887,7 +34887,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4930408646758490893}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.17, z: 0}
+  m_LocalPosition: {x: 0, y: 0.59, z: 0}
   m_LocalScale: {x: 0.1725, y: 0.045, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -34946,7 +34946,7 @@ GameObject:
   - component: {fileID: 2237058942330626287}
   - component: {fileID: 8629632398674961167}
   - component: {fileID: 2592551389070341704}
-  m_Layer: 7
+  m_Layer: 4
   m_Name: Wall Slide Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}

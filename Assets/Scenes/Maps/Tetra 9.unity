@@ -3713,6 +3713,10 @@ PrefabInstance:
       propertyPath: lobbyScene.sceneIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9017200533352519797, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.14
+      objectReference: {fileID: 0}
     - target: {fileID: 9017200534256755266, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: board
       value: 
@@ -3726,12 +3730,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9017200534256755266, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
+      propertyPath: playerSpawnPosition
+      value: 
+      objectReference: {fileID: 9017200534433371551}
+    - target: {fileID: 9017200534256755266, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: useKeyboardAsBoardPlayer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9017200534256755269, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9017200534256755269, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.39
+      value: -0.14
       objectReference: {fileID: 0}
     - target: {fileID: 9017200534531234594, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: m_RootOrder
@@ -3739,11 +3751,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9017200534531234594, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.63879395
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9017200534531234594, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.200047
+      value: 7.14
       objectReference: {fileID: 0}
     - target: {fileID: 9017200534531234594, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3783,3 +3795,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
+--- !u!4 &9017200534433371551 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9017200534531234594, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
+  m_PrefabInstance: {fileID: 9017200534433371550}
+  m_PrefabAsset: {fileID: 0}

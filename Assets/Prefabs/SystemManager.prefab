@@ -46,12 +46,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lobbyScene:
     Scene: {fileID: 102900000, guid: 1627b023436078b48ae53b29381e07fa, type: 3}
-    SceneName: Lobby
+    SceneName: 
     sceneIndex: 1
     sceneEnabled: 1
   levels:
   - Scene: {fileID: 102900000, guid: 2cda990e2423bbf4892e6590ba056729, type: 3}
-    SceneName: TetrisTAG
+    SceneName: 
     sceneIndex: 0
     sceneEnabled: 1
   currentLevel: 0
@@ -82,7 +82,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9017200534256755268}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.63879395, y: -7.6999526, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -101,7 +101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c29380c86c66c1f48ae5307b6693cd76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  board: {fileID: 0}
   playerPrefab: {fileID: 6661764743193364598, guid: a758f4c47c8e05242aa9c708a1c99374, type: 3}
   playerSpawnPosition: {fileID: 9017200534256755269}
   useKeyboardAsBoardPlayer: 1

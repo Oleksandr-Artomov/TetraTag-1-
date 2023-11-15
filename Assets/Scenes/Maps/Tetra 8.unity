@@ -2973,6 +2973,10 @@ PrefabInstance:
       propertyPath: lobbyScene.sceneIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9017200533352519797, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.22
+      objectReference: {fileID: 0}
     - target: {fileID: 9017200534256755266, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: board
       value: 
@@ -2990,8 +2994,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9017200534256755269, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
-      propertyPath: m_LocalPosition.y
+      propertyPath: m_LocalPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9017200534256755269, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.22
       objectReference: {fileID: 0}
     - target: {fileID: 9017200534531234594, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: m_RootOrder
@@ -2999,11 +3007,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9017200534531234594, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.63879395
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9017200534531234594, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.200047
+      value: -1.22
       objectReference: {fileID: 0}
     - target: {fileID: 9017200534531234594, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: m_LocalPosition.z
