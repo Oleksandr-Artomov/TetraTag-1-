@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
+
 
 public class Piece : MonoBehaviour
 {
@@ -221,12 +223,42 @@ public class Piece : MonoBehaviour
 
     private void Lock()
     {
+        // Shake the blocks when locked
+        StartCoroutine(ShakeBlocks());
+
+        // Rest of your existing code...
+
         board.Set(this);
         board.ClearLines();
         board.SpawnPiece();
 
         // Store the stepDelay of the last dropped piece
         lastDroppedPieceStepDelay = stepDelay;
+    }
+
+    private IEnumerator ShakeBlocks()
+    {
+        float shakeDuration = 0.3f;
+        float shakeMagnitude = 0.1f;
+
+        Vector3 originalPosition = transform.position;
+
+        float elapsed = 0f;
+
+        while (elapsed < shakeDuration)
+        {
+            float x = originalPosition.x + Random.Range(-shakeMagnitude, shakeMagnitude);
+            float y = originalPosition.y + Random.Range(-shakeMagnitude, shakeMagnitude);
+
+            transform.position = new Vector3(x, y, originalPosition.z);
+
+            elapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        // Reset the position after shaking
+        transform.position = originalPosition;
     }
 
     private bool Move(Vector2Int translation)
