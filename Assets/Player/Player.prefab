@@ -19799,8 +19799,8 @@ MonoBehaviour:
       appliedFallVelocity: 0
     isFacingLeft: 0
     timeOfTurnAround: 1
-    moveSpeed: 15
-    maxSpeed: 30
+    moveSpeed: 40
+    maxSpeed: 50
     airResistance: 0.25
     rigidbody: {fileID: 3054942120541986088}
     spriteRenderer: {fileID: 3054942120714206837}

@@ -5,7 +5,7 @@ using System.Collections;
 
 public class Piece : MonoBehaviour
 {
-    
+
     public Board board { get; private set; }
     public TetrominoData data { get; private set; }
     public Vector3Int[] cells { get; private set; }
@@ -24,12 +24,11 @@ public class Piece : MonoBehaviour
     private float timeElapsed = 0f;
     private float timeSinceLastDebug = 0f;
 
-    private bool isSoftDropping = false; // Flag to track soft drop
-
-    public float speedIncreaseRate = 0.03f; // Adjust this rate for your desired speed increase (3% increase per second)
+    public float speedIncreaseRate = 20f; // Adjust this rate for your desired speed increase (3% increase per second)
 
 
     private float lastDroppedPieceStepDelay; // Store the stepDelay of the last dropped piece
+    private bool isHardDropping = false; // Add this flag
 
 
     public void Initialize(Board board, Vector3Int position, TetrominoData data)
@@ -80,9 +79,9 @@ public class Piece : MonoBehaviour
             inputs.leftRotate = gamepad[board.LeftRotate].wasPressedThisFrame;
             inputs.rightRotate = gamepad[board.RightRotate].wasPressedThisFrame;
             inputs.hardDrop = gamepad[board.HardDrop].isPressed; /*wasPressedThisFrame;*/
-            inputs.softDrop = gamepad[board.SoftDrop].isPressed; 
-            inputs.moveRight = gamepad[board.MoveRight].isPressed; 
-            inputs.moveLeft = gamepad[board.MoveLeft].isPressed; 
+            inputs.softDrop = gamepad[board.SoftDrop].isPressed;
+            inputs.moveRight = gamepad[board.MoveRight].isPressed;
+            inputs.moveLeft = gamepad[board.MoveLeft].isPressed;
         }
 
         Keyboard keyboard = Keyboard.current;
@@ -93,7 +92,7 @@ public class Piece : MonoBehaviour
         inputs.softDrop |= keyboard[board.SoftDrop].isPressed;
         inputs.moveRight |= keyboard[board.MoveRight].isPressed;
         inputs.moveLeft |= keyboard[board.MoveLeft].isPressed;
-        
+
         return inputs;
     }
     private void Update()
@@ -104,12 +103,6 @@ public class Piece : MonoBehaviour
         // Update the time elapsed
         timeElapsed += Time.deltaTime;
 
-        // Lower the stepDelay to increase falling speed, even when soft dropping
-        stepDelay -= speedIncreaseRate * Time.deltaTime;
-
-        // Ensure stepDelay doesn't go below a minimum value
-        stepDelay = Mathf.Max(stepDelay, 0.1f); // Adjust the minimum value as needed
-
         // Display the current piece falling speed every second
         timeSinceLastDebug += Time.deltaTime;
 
@@ -118,54 +111,53 @@ public class Piece : MonoBehaviour
         lockTime += Time.deltaTime;
         var inputs = HandleInputs();
 
-        if (inputs.softDrop)
+        // Handle rotation outside of the hard drop phase
+        if (!isHardDropping)
         {
-            isSoftDropping = true;
+            if (inputs.leftRotate)
+            {
+                Rotate(-1);
+            }
+            else if (inputs.rightRotate)
+            {
+                Rotate(1);
+            }
         }
-
-        // Handle rotation
-        if (inputs.leftRotate)
-        {
-            Rotate(-1);
-        }
-        else if (inputs.rightRotate)
-        {
-            Rotate(1);
-        }
-
-        // Handle hard drop
 
         // Allow the player to hold movement keys but only after a move delay
         // so it does not move too fast
         if (Time.time > moveTime)
         {
-            if (isSoftDropping && inputs.softDrop)
+            // Left/right movement
+            if (!isHardDropping)
             {
-                if (Move(Vector2Int.down))
+                if (inputs.moveLeft)
                 {
-                    // Update the step time to prevent double movement
-                    stepTime = Time.time + stepDelay;
+                    Move(Vector2Int.left);
                 }
-                isSoftDropping = true;
+                else if (inputs.moveRight)
+                {
+                    Move(Vector2Int.right);
+                }
             }
 
+            // Handle hard drop
             if (inputs.hardDrop)
             {
-                if (Move(Vector2Int.down))
-                {
-                    // Update the step time to prevent double movement
-                    stepTime = Time.time + stepDelay;
-                }
+                isHardDropping = true; // Set the flag to indicate hard drop in progress
             }
 
-            // Left/right movement
-            if (inputs.moveLeft)
+            // Continue moving downward if hard drop is in progress
+            if (isHardDropping && Move(Vector2Int.down))
             {
-                Move(Vector2Int.left);
+                // Update the step time to prevent double movement
+                stepTime = Time.time + stepDelay;
             }
-            else if (inputs.moveRight)
+            else if (isHardDropping)
             {
-                Move(Vector2Int.right);
+                // Lock the piece in place when hard drop is complete
+                Lock();
+                isHardDropping = false; // Reset the flag
             }
         }
 
@@ -175,21 +167,10 @@ public class Piece : MonoBehaviour
             Step();
         }
 
-        // Check if it's time to increase the speed
-        // Update the time elapsed only if not in a soft drop
-        if (isSoftDropping == false)
-        {
-            timeElapsed += Time.deltaTime;
-
-            // Lower the stepDelay to increase falling speed
-            stepDelay -= speedIncreaseRate * Time.deltaTime;
-
-            // Ensure stepDelay doesn't go below a minimum value
-            stepDelay = Mathf.Max(stepDelay, 0.1f); // Adjust the minimum value as needed
-        }
-
         board.Set(this);
     }
+
+
 
     private void Step()
     {
@@ -234,6 +215,12 @@ public class Piece : MonoBehaviour
 
         // Store the stepDelay of the last dropped piece
         lastDroppedPieceStepDelay = stepDelay;
+
+        // Lower the stepDelay to increase falling speed, even when soft dropping
+        stepDelay -= speedIncreaseRate * Time.deltaTime;
+
+        // Ensure stepDelay doesn't go below a minimum value
+        stepDelay = Mathf.Max(stepDelay, 0.1f); // Adjust the minimum value as needed
     }
 
     private IEnumerator ShakeBlocks()
@@ -370,5 +357,4 @@ public class Piece : MonoBehaviour
             return min + (input - min) % (max - min);
         }
     }
-
 }

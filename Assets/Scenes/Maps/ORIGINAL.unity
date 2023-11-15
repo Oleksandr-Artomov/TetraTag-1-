@@ -354,25 +354,25 @@ Tilemap:
   m_TileMatrixArray:
   - m_RefCount: 0
     m_Data:
-      e00: 7.111353e+26
+      e00: -3.3583342e+21
       e01: 0
-      e02: 5.7506943
-      e03: 5.7506943
-      e10: 7.24e-43
+      e02: -5.750099
+      e03: -5.750099
+      e10: 7.71e-43
       e11: 0
-      e12: 7.24e-43
-      e13: 7.24e-43
-      e20: -4.3683937e-13
-      e21: 2.8e-44
-      e22: -7.3553107e-19
-      e23: -2.0407562
-      e30: 4.5904e-41
+      e12: 7.71e-43
+      e13: 7.71e-43
+      e20: 0.002348613
+      e21: 4e-45
+      e22: 1.6129904e-28
+      e23: 5.0235904e-10
+      e30: 4.5905e-41
       e31: 0
-      e32: 7.24e-43
-      e33: 7.27e-43
+      e32: 7.72e-43
+      e33: 7.75e-43
   m_TileColorArray:
   - m_RefCount: 0
-    m_Data: {r: 1.36069e-40, g: 1.36069e-40, b: 1.36069e-40, a: 1.36069e-40}
+    m_Data: {r: 1.34682e-40, g: 1.34682e-40, b: 1.34682e-40, a: 1.34682e-40}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1804,6 +1804,7 @@ GameObject:
   - component: {fileID: 1820771110}
   - component: {fileID: 1820771109}
   - component: {fileID: 1820771108}
+  - component: {fileID: 1820771112}
   m_Layer: 0
   m_Name: Board-TileMap
   m_TagString: Board
@@ -1828,6 +1829,7 @@ MonoBehaviour:
   lockDelay: 0.33
   lockTime: 0.00000005
   speedIncreaseRate: 0.009
+  hardDropEffect: {fileID: 7874633291139245121, guid: ce834941e1d34c8429986c163d6eb030, type: 3}
 --- !u!114 &1820771109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1904,6 +1906,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1820771112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820771107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 394e787ff319df9429933e54a23d2e86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1872176065
 GameObject:
   m_ObjectHideFlags: 0
