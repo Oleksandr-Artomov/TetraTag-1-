@@ -2208,7 +2208,7 @@ PrefabInstance:
       objectReference: {fileID: 102900000, guid: 3a6d8252277a0ef4c94d6446e5b680c7, type: 3}
     - target: {fileID: 9017200533352519794, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: levels.Array.size
-      value: 12
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9017200533352519794, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: startingGamestate
@@ -2225,7 +2225,7 @@ PrefabInstance:
     - target: {fileID: 9017200533352519794, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: levels.Array.data[0].Scene
       value: 
-      objectReference: {fileID: 102900000, guid: d08bde62ad161314baf26967dc5bb53e, type: 3}
+      objectReference: {fileID: 102900000, guid: 021a53c8dab0d1b4a8726829482434fe, type: 3}
     - target: {fileID: 9017200533352519794, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: levels.Array.data[1].Scene
       value: 
@@ -2288,7 +2288,7 @@ PrefabInstance:
       objectReference: {fileID: 102900000, guid: d59359d395bda2147b4f999b0c38f290, type: 3}
     - target: {fileID: 9017200533352519794, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: levels.Array.data[0].SceneName
-      value: Tetra 1
+      value: ORIGINAL
       objectReference: {fileID: 0}
     - target: {fileID: 9017200533352519794, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: levels.Array.data[1].SceneName
@@ -2328,7 +2328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9017200533352519794, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: levels.Array.data[0].sceneIndex
-      value: 11
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 9017200533352519794, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: levels.Array.data[10].SceneName
