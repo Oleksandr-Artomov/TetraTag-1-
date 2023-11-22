@@ -129,8 +129,7 @@ public class Piece : MonoBehaviour
         if (Time.time > moveTime)
         {
             // Left/right movement
-            if (!isHardDropping)
-            {
+
                 if (inputs.moveLeft)
                 {
                     Move(Vector2Int.left);
@@ -139,7 +138,6 @@ public class Piece : MonoBehaviour
                 {
                     Move(Vector2Int.right);
                 }
-            }
 
             // Handle hard drop
             if (inputs.hardDrop)
@@ -212,9 +210,6 @@ public class Piece : MonoBehaviour
         board.Set(this);
         board.ClearLines();
         board.SpawnPiece();
-
-        // Store the stepDelay of the last dropped piece
-        lastDroppedPieceStepDelay = stepDelay;
 
         // Lower the stepDelay to increase falling speed, even when soft dropping
         stepDelay -= speedIncreaseRate * Time.deltaTime;
