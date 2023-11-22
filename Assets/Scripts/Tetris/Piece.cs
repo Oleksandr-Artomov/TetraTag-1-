@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using UnityEngine.UI;
 
 
 public class Piece : MonoBehaviour
@@ -30,6 +31,7 @@ public class Piece : MonoBehaviour
     private float lastDroppedPieceStepDelay; // Store the stepDelay of the last dropped piece
     private bool isHardDropping = false; // Add this flag
 
+    public Text nextTetrominoText; // Reference to the UI text element
 
     public void Initialize(Board board, Vector3Int position, TetrominoData data)
     {
@@ -56,6 +58,8 @@ public class Piece : MonoBehaviour
         {
             cells[i] = (Vector3Int)data.cells[i];
         }
+
+
     }
 
     struct Inputs
@@ -346,6 +350,14 @@ public class Piece : MonoBehaviour
         else
         {
             return min + (input - min) % (max - min);
+        }
+    }
+
+    private void UpdateNextTetrominoDisplay()
+    {
+        if (nextTetrominoText != null)
+        {
+            nextTetrominoText.text = " " + board.GetNextTetromino(); // Assuming you have a method in Board to get the next tetromino
         }
     }
 }
