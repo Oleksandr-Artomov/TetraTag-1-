@@ -146,7 +146,7 @@ public class Piece : MonoBehaviour
             }
 
             // Continue moving downward if hard drop is in progress
-            if (isHardDropping && Move(Vector2Int.down))
+            if (isHardDropping)
             {
                 // Update the step time to prevent double movement
                 stepTime = Time.time + stepDelay;
@@ -210,6 +210,9 @@ public class Piece : MonoBehaviour
         board.Set(this);
         board.ClearLines();
         board.SpawnPiece();
+
+        // Store the stepDelay of the last dropped piece
+        lastDroppedPieceStepDelay = stepDelay;
 
         // Lower the stepDelay to increase falling speed, even when soft dropping
         stepDelay -= speedIncreaseRate * Time.deltaTime;
