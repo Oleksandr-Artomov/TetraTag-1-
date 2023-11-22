@@ -112,8 +112,6 @@ public class Piece : MonoBehaviour
         var inputs = HandleInputs();
 
         // Handle rotation outside of the hard drop phase
-        if (!isHardDropping)
-        {
             if (inputs.leftRotate)
             {
                 Rotate(-1);
@@ -122,22 +120,20 @@ public class Piece : MonoBehaviour
             {
                 Rotate(1);
             }
-        }
 
         // Allow the player to hold movement keys but only after a move delay
         // so it does not move too fast
         if (Time.time > moveTime)
         {
             // Left/right movement
-
-                if (inputs.moveLeft)
-                {
-                    Move(Vector2Int.left);
-                }
-                else if (inputs.moveRight)
-                {
-                    Move(Vector2Int.right);
-                }
+            if (inputs.moveLeft)
+            {
+                Move(Vector2Int.left);
+            }
+            else if (inputs.moveRight)
+            {
+                Move(Vector2Int.right);
+            }
 
             // Handle hard drop
             if (inputs.hardDrop)
@@ -146,7 +142,7 @@ public class Piece : MonoBehaviour
             }
 
             // Continue moving downward if hard drop is in progress
-            if (isHardDropping)
+            if (isHardDropping && Move(Vector2Int.down))
             {
                 // Update the step time to prevent double movement
                 stepTime = Time.time + stepDelay;
@@ -210,9 +206,6 @@ public class Piece : MonoBehaviour
         board.Set(this);
         board.ClearLines();
         board.SpawnPiece();
-
-        // Store the stepDelay of the last dropped piece
-        lastDroppedPieceStepDelay = stepDelay;
 
         // Lower the stepDelay to increase falling speed, even when soft dropping
         stepDelay -= speedIncreaseRate * Time.deltaTime;

@@ -1828,7 +1828,7 @@ MonoBehaviour:
   moveDelay: 0.1
   lockDelay: 0.33
   lockTime: 0.00000005
-  speedIncreaseRate: 3
+  speedIncreaseRate: 2.5
 --- !u!114 &1820771109
 MonoBehaviour:
   m_ObjectHideFlags: 0
