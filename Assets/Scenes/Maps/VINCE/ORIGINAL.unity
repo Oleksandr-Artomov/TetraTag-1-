@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startTransform: {fileID: 794708983}
   endTransform: {fileID: 1333975817}
-  speed: 2
+  speed: 0.05
   countdownDuration: 5
   countdownEnabled: 1
 --- !u!61 &84367162
@@ -227,7 +227,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0.5176471}
+  m_Color: {r: 0.44716978, g: 0.83440655, b: 1, a: 0.5176471}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -245,8 +245,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 84367160}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.125035, y: -6.3505116, z: 0.5}
-  m_LocalScale: {x: 23.964975, y: 23.25, z: 1}
+  m_LocalPosition: {x: -4.1932, y: -6.3505116, z: 0.5}
+  m_LocalScale: {x: 10.326645, y: 23.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 876051459}
