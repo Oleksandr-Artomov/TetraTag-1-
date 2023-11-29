@@ -8,7 +8,9 @@ public class Player : Actor
     [SerializeField] PlayerControls controls;
     [SerializeField] MovementValues movementValues;
     [SerializeField] SquishBox[] squishBoxes;
+    [SerializeField] SpriteRenderer spriteRenderer;
     float waitTime;
+    
     
 
     private void Start()
@@ -30,5 +32,10 @@ public class Player : Actor
     {
         InputHandler.HandleInputs(controls, DeviceID, ref movementValues.jumpValues.canJump);
         Movement.Update(controls, ref movementValues);
+    }
+
+    public void SetColor(Color color)
+    {
+        spriteRenderer.color = color;   
     }
 }

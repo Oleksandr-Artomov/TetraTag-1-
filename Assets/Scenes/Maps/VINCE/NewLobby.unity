@@ -270,7 +270,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpawnPosition: {fileID: 444863347}
-  playerPrefab: {fileID: 5705313811684594786, guid: a758f4c47c8e05242aa9c708a1c99374, type: 3}
   deviceIDs: 
 --- !u!1 &250372250
 GameObject:
@@ -2484,7 +2483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9017200534256755266, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: useKeyboardAsBoardPlayer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9017200534531234594, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: m_RootOrder

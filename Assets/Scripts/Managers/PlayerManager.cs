@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using MyBox;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
+using System.Linq;
 
 public class PlayerManager : Manager
 {
@@ -15,12 +16,24 @@ public class PlayerManager : Manager
     [HideInInspector] public UnityEvent OnAllPlayersSquished;
     [HideInInspector] public UnityEvent OnPlayerEscaped;
 
+    static Dictionary<int, Color> playerColors;
+    Color[] colors = new Color[4]
+    {
+        Color.red,
+        Color.green,
+        Color.blue,
+        Color.yellow
+    };
+
     int playersSquished;
 
     int round = 0;
 
     [SerializeField, DisplayInspector] List<Actor> actors = new List<Actor>();
-
+    static PlayerManager()
+    {
+        playerColors = new();
+    }
     public void OnGameStart()
     {
         var devices = InputSystem.devices;
@@ -44,21 +57,47 @@ public class PlayerManager : Manager
         for(int j = 0; j < round; j++)
         {
             Switch();
-        }
+        } 
     }
+    public Player CreatePlayer(int deviceID)
+    {
+        var player = Instantiate(playerPrefab);
+        player.transform.position = playerSpawnPosition.position;
+        player.DeviceID = deviceID;
 
+
+        var color = Color.white;
+        if (playerColors.ContainsKey(deviceID))
+        {
+            color = playerColors[deviceID];
+        }
+        else
+        {
+            color = colors.GetRandom();
+
+            //Get A Color That Is Not Being Used
+            var collection = playerColors.Values;
+            while (collection.Contains(color))
+                color = colors.GetRandom();
+
+            playerColors.Add(deviceID, color);
+        }
+
+        player.SetColor(color);
+        return player;
+    }
     void SetUp(ReadOnlyArray<InputDevice> devices, int i = 0)
     {
         actors.Add(board);
         for (; i < devices.Count; i++)
         {
             if (devices[i] is not Gamepad) continue;
-
-            var player = Instantiate(playerPrefab);
-            player.transform.position = playerSpawnPosition.position;
-            player.DeviceID = devices[i].deviceId;
-            actors.Add(player);
+            actors.Add(CreatePlayer(devices[i].deviceId));
         }
+
+        foreach (var item in playerColors)
+            print(item.Key + " - " + item.Value);
+
         Debug.Log("Number of actors: " + actors.Count);
     }
 
@@ -76,6 +115,11 @@ public class PlayerManager : Manager
         {
             if (useKeyboardAsBoardPlayer && actors[i] == board) continue;
             actors[i].DeviceID = ids[(j + 1) % ids.Count];
+
+            if (actors[i] is Player player)
+            {
+                player.SetColor(playerColors[player.DeviceID]);
+            }
             ++j;
         }
     }

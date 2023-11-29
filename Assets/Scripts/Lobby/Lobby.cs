@@ -6,11 +6,11 @@ using UnityEngine.InputSystem;
 public class Lobby : MonoBehaviour
 {
     [SerializeField] Transform playerSpawnPosition;
-    [SerializeField] Player playerPrefab;
     public List<int> deviceIDs = new List<int>();
     public void FixedUpdate()
     {
         var devices = InputSystem.devices;
+        var playerManager = SystemManager.Get<PlayerManager>();
 
         foreach (var device in devices)
         {
@@ -18,10 +18,8 @@ public class Lobby : MonoBehaviour
             if (device is not Gamepad) continue;
 
             deviceIDs.Add(device.deviceId);
-
-            var player = Instantiate(playerPrefab);
+            var player = playerManager.CreatePlayer(device.deviceId);
             player.transform.position = playerSpawnPosition.position;
-            player.DeviceID = device.deviceId;
         }        
     }
 
