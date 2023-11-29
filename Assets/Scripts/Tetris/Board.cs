@@ -23,6 +23,8 @@ public class Board : Actor
         }
     }
 
+    private Tetromino nextTetromino;
+
     public Keybind LeftRotate;
     public Keybind RightRotate;
     public Keybind HardDrop;
@@ -36,6 +38,7 @@ public class Board : Actor
     public TetrominoData[] tetrominoes;
     public Vector3Int spawnPosition = new Vector3Int(-1, 8, 0); //SPAWN----------
     public Vector2Int boardSize = new Vector2Int(10, 20); // BOARD SIZE----------
+    public float LastDroppedPieceStepDelay { get; private set; }
 
     public RectInt Bounds
     {
@@ -60,18 +63,19 @@ public class Board : Actor
     private void Start()
     {
         SpawnPiece();
+        SetNextTetromino(); // Set the initial next tetromino
     }
+
 
     public void SpawnPiece()
     {
-        int random = UnityEngine.Random.Range(0, tetrominoes.Length);
-        TetrominoData data = tetrominoes[random];
-
+        TetrominoData data = tetrominoes[(int)nextTetromino]; // Use the next tetromino
         activePiece.Initialize(this, spawnPosition, data);
 
         if (IsValidPosition(activePiece, spawnPosition))
         {
             Set(activePiece);
+            SetNextTetromino(); // Set the next next tetromino after spawning the current one
         }
         else
         {
@@ -193,6 +197,28 @@ public class Board : Actor
 
             row++;
         }
+    }
+
+    public Tetromino GetNextTetromino()
+    {
+        return nextTetromino;
+    }
+
+    // You can keep your existing SetNextTetromino method
+    public void SetNextTetromino()
+    {
+        nextTetromino = GetRandomTetromino();
+        if (activePiece.nextTetrominoText != null)
+        {
+            activePiece.nextTetrominoText.text = " " + nextTetromino;
+        }
+    }
+
+    // Your existing GetRandomTetromino method
+    private Tetromino GetRandomTetromino()
+    {
+        Array values = Enum.GetValues(typeof(Tetromino));
+        return (Tetromino)values.GetValue(UnityEngine.Random.Range(0, values.Length));
     }
 
 }
