@@ -153,8 +153,15 @@ public class PlayerManager : Manager
             if (actor is Player player)
             {
                 player.standStillBar = Instantiate(standStillBarPrefab, parent);
-            }   
-        }  
+
+                // Assuming that fillAmount represents the fill level of the standstill bar
+                if (player.standStillBar.fillAmount >= 1.0f)
+                {
+                    // The bar is filled, so consider the player squished
+                    OnPlayerSquished(player);
+                }
+            }
+        }
     }
 }
 

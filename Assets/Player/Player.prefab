@@ -19781,10 +19781,10 @@ MonoBehaviour:
     <TimeOfDash>k__BackingField: 0
   movementValues:
     jumpValues:
-      jumpForce: 5.46
-      maxAirTime: -0.39
-      jumpBuffer: 0.05
-      fallGravityScale: 0.3
+      jumpForce: 5.4
+      maxAirTime: 0.07
+      jumpBuffer: 0.052
+      fallGravityScale: 0.117
       turnAroundMomentumDeduction: 0.75
       jumpPerk: 1
       doubleJump:
@@ -19799,9 +19799,9 @@ MonoBehaviour:
       appliedFallVelocity: 0
     isFacingLeft: 0
     timeOfTurnAround: 1
-    moveSpeed: 8.92
-    maxSpeed: 11.83
-    airResistance: 0.25
+    moveSpeed: 17.3
+    maxSpeed: 17.8
+    airResistance: 0
     rigidbody: {fileID: 3054942120541986088}
     spriteRenderer: {fileID: 3054942120714206837}
     grounded: {fileID: 3847637072645022329}
@@ -19809,7 +19809,7 @@ MonoBehaviour:
   - {fileID: 6671723784836477820}
   - {fileID: 2361237484185551115}
   spriteRenderer: {fileID: 3054942120714206837}
-  timeToFill: 5
+  timeToFill: 20
   escaped: 0
   standStillBar: {fileID: 0}
 --- !u!58 &6643836885522344794
