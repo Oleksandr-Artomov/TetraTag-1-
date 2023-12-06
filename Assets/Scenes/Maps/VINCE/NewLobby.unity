@@ -2211,7 +2211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9017200533352519794, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: startingGamestate
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9017200533352519794, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: lobbyScene.SceneName
@@ -2474,16 +2474,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9017200534256755266, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
-      propertyPath: playerPrefab
-      value: 
-      objectReference: {fileID: 5705313811684594786, guid: a758f4c47c8e05242aa9c708a1c99374, type: 3}
-    - target: {fileID: 9017200534256755266, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: actors.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9017200534256755266, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: useKeyboardAsBoardPlayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9017200534531234594, guid: cb1b64c137b2e1e4abfad81a815ae11a, type: 3}
       propertyPath: m_RootOrder

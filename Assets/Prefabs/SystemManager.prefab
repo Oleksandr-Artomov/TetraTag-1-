@@ -101,13 +101,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c29380c86c66c1f48ae5307b6693cd76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 6661764743193364598, guid: a758f4c47c8e05242aa9c708a1c99374, type: 3}
+  playerPrefab: {fileID: 5705313811684594786, guid: a758f4c47c8e05242aa9c708a1c99374, type: 3}
   playerSpawnPosition: {fileID: 9017200534256755269}
   useKeyboardAsBoardPlayer: 1
+  standStillBarPrefab: {fileID: 1292799715987331287, guid: 34ff09fe62a62c141aa3eed98068969c, type: 3}
+  playersEscaped: 0
   OnAllPlayersSquished:
     m_PersistentCalls:
       m_Calls: []
-  OnPlayerEscaped:
+  OnAllPlayersEscaped:
     m_PersistentCalls:
       m_Calls: []
   actors: []

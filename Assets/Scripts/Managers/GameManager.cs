@@ -20,7 +20,7 @@ public class GameManager : Manager
         var playerManager = SystemManager.Get<PlayerManager>();
 
         playerManager.OnAllPlayersSquished.AddListener(OnBoardPlayerWin);
-        playerManager.OnPlayerEscaped.AddListener(OnPlayersWin);
+        playerManager.OnAllPlayersEscaped.AddListener(OnPlayersWin);
 
         CurrentState = startingGamestate;
     }
@@ -80,6 +80,7 @@ public class GameManager : Manager
         if (playerManager != null)
         {
             playerManager.OnGameStart();
+            FindObjectOfType<StandStillBar>().OnGameStart();
         }
         else
         {

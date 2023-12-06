@@ -6,6 +6,7 @@ using MyBox;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 using System.Linq;
+using UnityEngine.UI;
 
 public class PlayerManager : Manager
 {
@@ -13,8 +14,10 @@ public class PlayerManager : Manager
     [SerializeField] Player playerPrefab;
     [SerializeField] Transform playerSpawnPosition;
     [SerializeField] bool useKeyboardAsBoardPlayer;
+    [SerializeField] Image standStillBarPrefab;
+    [SerializeField, ReadOnly] int playersEscaped = 0;
     [HideInInspector] public UnityEvent OnAllPlayersSquished;
-    [HideInInspector] public UnityEvent OnPlayerEscaped;
+    [HideInInspector] public UnityEvent OnAllPlayersEscaped;
 
     static Dictionary<int, Color> playerColors;
     Color[] colors = new Color[4]
@@ -39,6 +42,7 @@ public class PlayerManager : Manager
         var devices = InputSystem.devices;
 
         playersSquished = 0;
+        playersEscaped = 0;
         actors.Clear();
         board = FindObjectOfType<Board>();
 
@@ -82,7 +86,7 @@ public class PlayerManager : Manager
 
             playerColors.Add(deviceID, color);
         }
-
+ 
         player.SetColor(color);
         return player;
     }
@@ -137,7 +141,20 @@ public class PlayerManager : Manager
     public void PlayerEscaped(Player player)
     {
         player.gameObject.SetActive(false);
-        OnPlayerEscaped?.Invoke();
+        ++playersEscaped;
+        if (playersEscaped == actors.Count - 1)
+            OnAllPlayersEscaped?.Invoke();
+    }
+
+    public void SetUpStandStillBars(RectTransform parent)
+    {   
+        foreach (var actor in actors)
+        {
+            if (actor is Player player)
+            {
+                player.standStillBar = Instantiate(standStillBarPrefab, parent);
+            }   
+        }  
     }
 }
 

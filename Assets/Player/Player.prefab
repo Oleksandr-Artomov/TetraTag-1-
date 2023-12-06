@@ -19809,6 +19809,9 @@ MonoBehaviour:
   - {fileID: 6671723784836477820}
   - {fileID: 2361237484185551115}
   spriteRenderer: {fileID: 3054942120714206837}
+  timeToFill: 5
+  escaped: 0
+  standStillBar: {fileID: 0}
 --- !u!58 &6643836885522344794
 CircleCollider2D:
   m_ObjectHideFlags: 0
