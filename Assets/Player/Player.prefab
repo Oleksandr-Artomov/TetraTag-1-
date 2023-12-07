@@ -19742,10 +19742,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 50
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 6200000, guid: c87b5ba6fe273a94ea90cf3cfb7649e1, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -19781,10 +19781,10 @@ MonoBehaviour:
     <TimeOfDash>k__BackingField: 0
   movementValues:
     jumpValues:
-      jumpForce: 5.4
-      maxAirTime: 0.07
+      jumpForce: 13
+      maxAirTime: 0.05
       jumpBuffer: 0.052
-      fallGravityScale: 0.117
+      fallGravityScale: 0.3
       turnAroundMomentumDeduction: 0.75
       jumpPerk: 1
       doubleJump:

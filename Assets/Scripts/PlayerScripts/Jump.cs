@@ -88,7 +88,7 @@ public static class Jump
     {
         if (values.validJumpPress && values.canJump && values.jumpType == JumpValues.Type.None)
         {
-            values.appliedFallVelocity = false;
+            values.appliedFallVelocity = true; //switched to true (Hi naashon - marc)
             values.jumpType = JumpValues.Type.Upright;
         }
         if (isGrounded)
@@ -110,7 +110,7 @@ public static class Jump
     {
         if (values.validJumpPress && values.canJump && values.jumpType == JumpValues.Type.None)
         {
-            values.appliedFallVelocity = false;
+            values.appliedFallVelocity = true; //switched to true (Hi naashon - marc)
             values.jumpType = JumpValues.Type.Upright;
         }
 
@@ -170,7 +170,7 @@ public static class Jump
         {
             rigidbody.velocity = rigidbody.velocity.SetY(values.jumpForce);
             // Reset gravity scale when jumping
-            rigidbody.gravityScale = 1.0f;
+            rigidbody.gravityScale = 3.0f;
         }
     }
 
