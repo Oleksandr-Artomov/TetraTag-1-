@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.Tilemaps;
+using System.Collections.Generic;
+
 
 public class Board : Actor
 {
@@ -23,8 +25,6 @@ public class Board : Actor
         }
     }
 
-    private Tetromino nextTetromino;
-
     public Keybind LeftRotate;
     public Keybind RightRotate;
     public Keybind HardDrop;
@@ -39,6 +39,10 @@ public class Board : Actor
     public Vector3Int spawnPosition = new Vector3Int(-1, 8, 0); //SPAWN----------
     public Vector2Int boardSize = new Vector2Int(10, 20); // BOARD SIZE----------
     public float LastDroppedPieceStepDelay { get; private set; }
+
+    private Tetromino nextTetromino;
+    private Tetromino secondNextTetromino;
+    private Tetromino thirdNextTetromino;
 
     public RectInt Bounds
     {
@@ -204,14 +208,22 @@ public class Board : Actor
         return nextTetromino;
     }
 
-    // You can keep your existing SetNextTetromino method
     public void SetNextTetromino()
     {
-        nextTetromino = GetRandomTetromino();
-        if (activePiece.nextTetrominoText != null)
+        // Get the next three tetrominos
+        Tetromino[] nextTetrominos = new Tetromino[3];
+        for (int i = 0; i < 3; i++)
         {
-            activePiece.nextTetrominoText.text = " " + nextTetromino;
+            nextTetrominos[i] = GetRandomTetromino();
         }
+
+        // Save the nextTetrominos for reference
+        nextTetromino = nextTetrominos[0];
+        secondNextTetromino = nextTetrominos[1];
+        thirdNextTetromino = nextTetrominos[2];
+
+        // Set the UI text for the next three tetrominos
+        UpdateNextTetrominoDisplay();
     }
 
     // Your existing GetRandomTetromino method
@@ -221,4 +233,50 @@ public class Board : Actor
         return (Tetromino)values.GetValue(UnityEngine.Random.Range(0, values.Length));
     }
 
+
+    public List<string> GetNextTetrominoTexts()
+    {
+        List<string> nextTetrominos = new List<string>();
+
+        // Get the next three tetrominos
+        Tetromino[] nextTetrominosArray = new Tetromino[3];
+        for (int i = 0; i < 3; i++)
+        {
+            nextTetrominosArray[i] = GetRandomTetromino();
+        }
+
+        // Convert the tetrominos to their string representations
+        foreach (Tetromino tetromino in nextTetrominosArray)
+        {
+            nextTetrominos.Add(tetromino.ToString());
+        }
+
+        return nextTetrominos;
+    }
+    private void UpdateNextTetrominoDisplay()
+    {
+        if (activePiece != null && activePiece.nextTetrominoText != null)
+        {
+            List<string> nextTetrominos = new List<string>
+            {
+                nextTetromino.ToString(),
+                secondNextTetromino.ToString(),
+                thirdNextTetromino.ToString()
+            };
+
+            // Set the UI text for the next three tetrominos
+            for (int i = 0; i < activePiece.nextTetrominoText.Length; i++)
+            {
+                if (i < nextTetrominos.Count)
+                {
+                    activePiece.nextTetrominoText[i].text = " " + nextTetrominos[i];
+                }
+                else
+                {
+                    // If there are fewer next tetrominos than available Text components, clear the text
+                    activePiece.nextTetrominoText[i].text = "";
+                }
+            }
+        }
+    }
 }

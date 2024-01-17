@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 
 public class Piece : MonoBehaviour
@@ -31,13 +32,12 @@ public class Piece : MonoBehaviour
     private float lastDroppedPieceStepDelay; // Store the stepDelay of the last dropped piece
     private bool isHardDropping = false; // Add this flag
 
-    public Text nextTetrominoText; // Reference to the UI text element
+    public Text[] nextTetrominoText; // Array of UI text elements for previews
+
 
     public void Initialize(Board board, Vector3Int position, TetrominoData data)
     {
         // Set the stepDelay to the value of the last dropped piece
-
-
         this.data = data;
         this.board = board;
         this.position = position;
@@ -59,8 +59,26 @@ public class Piece : MonoBehaviour
             cells[i] = (Vector3Int)data.cells[i];
         }
 
+        UpdateNextTetrominoDisplay();
 
+        // Update previews for the next three tetrominos
+        if (nextTetrominoText.Length > 0)
+        {
+            nextTetrominoText[0].text = " " + board.GetNextTetromino();
+        }
+
+        if (nextTetrominoText.Length > 1)
+        {
+            nextTetrominoText[1].text = " " + board.GetNextTetromino();
+        }
+
+        if (nextTetrominoText.Length > 2)
+        {
+            nextTetrominoText[2].text = " " + board.GetNextTetromino();
+        }
     }
+
+
 
     struct Inputs
     {
@@ -116,14 +134,14 @@ public class Piece : MonoBehaviour
         var inputs = HandleInputs();
 
         // Handle rotation outside of the hard drop phase
-            if (inputs.leftRotate)
-            {
-                Rotate(-1);
-            }
-            else if (inputs.rightRotate)
-            {
-                Rotate(1);
-            }
+        if (inputs.leftRotate)
+        {
+            Rotate(-1);
+        }
+        else if (inputs.rightRotate)
+        {
+            Rotate(1);
+        }
 
         // Allow the player to hold movement keys but only after a move delay
         // so it does not move too fast
@@ -357,7 +375,21 @@ public class Piece : MonoBehaviour
     {
         if (nextTetrominoText != null)
         {
-            nextTetrominoText.text = " " + board.GetNextTetromino(); // Assuming you have a method in Board to get the next tetromino
+            List<string> nextTetrominos = board.GetNextTetrominoTexts(); // Use the correct method
+
+            for (int i = 0; i < nextTetrominoText.Length; i++)
+            {
+                if (i < nextTetrominos.Count)
+                {
+                    nextTetrominoText[i].text = " " + nextTetrominos[i];
+                }
+                else
+                {
+                    // If there are fewer next tetrominos than available Text components, clear the text
+                    nextTetrominoText[i].text = "";
+                }
+            }
         }
     }
+
 }
