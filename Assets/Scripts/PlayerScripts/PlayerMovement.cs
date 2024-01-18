@@ -16,6 +16,10 @@ public struct MovementValues
     public float maxSpeed;
     [Range(0f, 1f)]
     public float airResistance;
+    public float dashSpeed;
+
+    [Range(0f, 1f)]
+    public float dashSpeedControlTreshold;
 
     public Rigidbody2D rigidbody;
     public SpriteRenderer spriteRenderer;
@@ -40,8 +44,22 @@ public static class Movement
     public static void Update(PlayerControls controls, ref MovementValues values)
     {
         TurnAround(controls, ref values);
+        Dash(controls, ref values);
         Jump.Update(ref values.jumpValues, controls.thisFrame.jumpPressed);
         Jump.ValidateJump(ref values.jumpValues, controls, values.IsGrounded);
+        
+    }
+
+    static void Dash(PlayerControls controls, ref MovementValues values)
+    {
+        if (!controls.thisFrame.dashPressed) return;
+
+        var speed = values.dashSpeed;
+        if (values.isFacingLeft)
+            speed = -speed;
+
+        values.rigidbody.velocity = new(speed, values.rigidbody.velocity.y);
+
     }
 
     private static void TurnAround(PlayerControls controls, ref MovementValues values)
@@ -74,6 +92,8 @@ public static class Movement
     private static void Move(ref MovementValues values, PlayerControls controls)
     {
         Vector2 currentVelocity = values.rigidbody.velocity;
+        if (Mathf.Abs(currentVelocity.x) >= values.dashSpeed * values.dashSpeedControlTreshold)
+            return;
 
         // Calculate horizontal movement
         float horizontalInput = controls.isHoldingRight ? 1f : (controls.isHoldingLeft ? -1f : 0f);

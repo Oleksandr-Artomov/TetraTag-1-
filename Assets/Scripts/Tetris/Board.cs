@@ -83,15 +83,14 @@ public class Board : Actor
         }
         else
         {
-            GameOver();
+            EndGame();
         }
     }
 
-    public void GameOver()
+    public void EndGame()
     {
         tilemap.ClearAllTiles();
-
-        // Do anything else you want on game over here..
+        SystemManager.Get<PlayerManager>().OnAllPlayersWon.Invoke();
     }
 
     public void Set(Piece piece)

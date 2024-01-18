@@ -15,11 +15,12 @@ public class PlayerManager : Manager
     [SerializeField] Transform playerSpawnPosition;
     [SerializeField] bool useKeyboardAsBoardPlayer;
     [SerializeField] Image standStillBarPrefab;
-    [SerializeField, ReadOnly] int playersEscaped = 0;
-    [HideInInspector] public UnityEvent OnAllPlayersSquished;
-    [HideInInspector] public UnityEvent OnAllPlayersEscaped;
+    [SerializeField, ReadOnly] int playersWon = 0;
+    [HideInInspector] public UnityEvent OnAllPlayersLost;
+    [HideInInspector] public UnityEvent OnAllPlayersWon;
 
-    static Dictionary<int, Color> playerColors;
+    static Dictionary<int, Color> playerColors = new();
+    static Dictionary<int, int> playerScores = new();
     Color[] colors = new Color[4]
     {
         Color.red,
@@ -32,17 +33,15 @@ public class PlayerManager : Manager
 
     int round = 0;
 
+    
+
     [SerializeField, DisplayInspector] List<Actor> actors = new List<Actor>();
-    static PlayerManager()
-    {
-        playerColors = new();
-    }
     public void OnGameStart()
     {
         var devices = InputSystem.devices;
 
         playersSquished = 0;
-        playersEscaped = 0;
+        playersWon = 0;
         actors.Clear();
         board = FindObjectOfType<Board>();
 
@@ -93,10 +92,15 @@ public class PlayerManager : Manager
     void SetUp(ReadOnlyArray<InputDevice> devices, int i = 0)
     {
         actors.Add(board);
+
+
         for (; i < devices.Count; i++)
         {
+            playerScores.TryAdd(devices[i].deviceId, 0);
+
             if (devices[i] is not Gamepad) continue;
             actors.Add(CreatePlayer(devices[i].deviceId));
+            
         }
 
         foreach (var item in playerColors)
@@ -128,22 +132,27 @@ public class PlayerManager : Manager
         }
     }
 
-    public void OnPlayerSquished(Player player)
+    public void OnPlayerDeath(Player player)
     {
         player.gameObject.SetActive(false);
         ++playersSquished;
         if (playersSquished == actors.Count - 1)
-            OnAllPlayersSquished?.Invoke();
-
-
+        {
+            ++playerScores[board.DeviceID];
+            OnAllPlayersLost?.Invoke();
+        }        
     }
    
-    public void PlayerEscaped(Player player)
+    public void OnPlayerWin(Player player)
     {
+        if (!player.gameObject.activeSelf) return;
+
         player.gameObject.SetActive(false);
-        ++playersEscaped;
-        if (playersEscaped == actors.Count - 1)
-            OnAllPlayersEscaped?.Invoke();
+        ++playersWon;
+        ++playerScores[player.DeviceID]; // Any Idiviudal Players Score Cna Be Accesssed Like This -> Player.DeviceID
+
+        if (playersWon == actors.Count - 1)
+            OnAllPlayersWon?.Invoke();
     }
 
     public void SetUpStandStillBars(RectTransform parent)
@@ -153,13 +162,6 @@ public class PlayerManager : Manager
             if (actor is Player player)
             {
                 player.standStillBar = Instantiate(standStillBarPrefab, parent);
-
-                // Assuming that fillAmount represents the fill level of the standstill bar
-                if (player.standStillBar.fillAmount >= 1.0f)
-                {
-                    // The bar is filled, so consider the player squished
-                    OnPlayerSquished(player);
-                }
             }
         }
     }
