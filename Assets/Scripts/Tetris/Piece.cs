@@ -33,10 +33,14 @@ public class Piece : MonoBehaviour
     private bool isHardDropping = false; // Add this flag
 
     public Text[] nextTetrominoText; // Array of UI text elements for previews
+    private Tetromino[] nextTetrominos;
 
 
-    public void Initialize(Board board, Vector3Int position, TetrominoData data)
-    {
+   
+
+
+public void Initialize(Board board, Vector3Int position, TetrominoData data, Tetromino[] nextTetrominos)
+{
         // Set the stepDelay to the value of the last dropped piece
         this.data = data;
         this.board = board;
@@ -48,6 +52,7 @@ public class Piece : MonoBehaviour
         lockTime = 0f;
 
         this.tag = "Board";
+        this.nextTetrominos = nextTetrominos;
 
         if (cells == null)
         {
@@ -393,3 +398,4 @@ public class Piece : MonoBehaviour
     }
 
 }
+

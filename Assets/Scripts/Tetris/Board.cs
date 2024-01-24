@@ -74,7 +74,7 @@ public class Board : Actor
     public void SpawnPiece()
     {
         TetrominoData data = tetrominoes[(int)nextTetromino]; // Use the next tetromino
-        activePiece.Initialize(this, spawnPosition, data);
+        activePiece.Initialize(this, spawnPosition, data, SetNextTetromino());
 
         if (IsValidPosition(activePiece, spawnPosition))
         {
@@ -207,7 +207,7 @@ public class Board : Actor
         return nextTetromino;
     }
 
-    public void SetNextTetromino()
+    public Tetromino[] SetNextTetromino()
     {
         // Get the next three tetrominos
         Tetromino[] nextTetrominos = new Tetromino[3];
@@ -217,13 +217,16 @@ public class Board : Actor
         }
 
         // Save the nextTetrominos for reference
-        nextTetromino = nextTetrominos[0];
-        secondNextTetromino = nextTetrominos[1];
-        thirdNextTetromino = nextTetrominos[2];
+        this.nextTetromino = nextTetrominos[0];
+        this.secondNextTetromino = nextTetrominos[1];
+        this.thirdNextTetromino = nextTetrominos[2];
 
         // Set the UI text for the next three tetrominos
         UpdateNextTetrominoDisplay();
+
+        return nextTetrominos;
     }
+
 
     // Your existing GetRandomTetromino method
     private Tetromino GetRandomTetromino()
@@ -231,6 +234,7 @@ public class Board : Actor
         Array values = Enum.GetValues(typeof(Tetromino));
         return (Tetromino)values.GetValue(UnityEngine.Random.Range(0, values.Length));
     }
+
 
 
     public List<string> GetNextTetrominoTexts()
