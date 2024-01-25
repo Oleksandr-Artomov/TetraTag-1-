@@ -19802,8 +19802,6 @@ MonoBehaviour:
     moveSpeed: 17.3
     maxSpeed: 17.8
     airResistance: 0
-    dashSpeed: 30
-    dashSpeedControlTreshold: 0.5
     rigidbody: {fileID: 3054942120541986088}
     spriteRenderer: {fileID: 3054942120714206837}
     grounded: {fileID: 3847637072645022329}
@@ -19814,7 +19812,6 @@ MonoBehaviour:
   timeToFill: 20
   escaped: 0
   standStillBar: {fileID: 0}
-  fillRate: 1.74
 --- !u!58 &6643836885522344794
 CircleCollider2D:
   m_ObjectHideFlags: 0

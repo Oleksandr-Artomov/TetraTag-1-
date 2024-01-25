@@ -19,8 +19,8 @@ public class GameManager : Manager
     {
         var playerManager = SystemManager.Get<PlayerManager>();
 
-        playerManager.OnAllPlayersLost.AddListener(OnBoardPlayerWin);
-        playerManager.OnAllPlayersWon.AddListener(OnPlayersWin);
+        playerManager.OnAllPlayersSquished.AddListener(OnBoardPlayerWin);
+        playerManager.OnAllPlayersEscaped.AddListener(OnPlayersWin);
 
         CurrentState = startingGamestate;
     }

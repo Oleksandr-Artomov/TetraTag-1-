@@ -17,7 +17,7 @@ public class Player : Actor
     public Image standStillBar;
     float waitTime;
     float fillTimer = 0;
-    [SerializeField, Range(1f, 5f)] float fillRate = 1f;
+    
     
     
 
@@ -37,7 +37,7 @@ public class Player : Actor
 
         if (!Array.TrueForAll(squishBoxes, s => s.IsTouching)) return;
 
-        SystemManager.Get<PlayerManager>().OnPlayerDeath(this);
+        SystemManager.Get<PlayerManager>().OnPlayerSquished(this);
     }
     private void Update()
     {
@@ -53,19 +53,14 @@ public class Player : Actor
     void UpdateStandStill()
     {
         if (Time.time - waitTime < 0.75f) return;
-        bool isMoving = movementValues.rigidbody.velocity.sqrMagnitude > 0.05f;
+        if (movementValues.rigidbody.velocity.sqrMagnitude > 0.05f) return;
 
-        if (!isMoving)
-            fillTimer += Time.deltaTime * fillRate;
-        else 
-            fillTimer -= Time.deltaTime;
-
+        fillTimer += Time.deltaTime;
         standStillBar.fillAmount = Mathf.Clamp01(fillTimer / timeToFill);
-
         if (!escaped && standStillBar.fillAmount >= 1)
         {
             escaped = true;
-            SystemManager.Get<PlayerManager>().OnPlayerWin(this);
+            SystemManager.Get<PlayerManager>().PlayerEscaped(this);
         }
     }
 
