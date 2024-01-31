@@ -33,14 +33,10 @@ public class Piece : MonoBehaviour
     private bool isHardDropping = false; // Add this flag
 
     public Text[] nextTetrominoText; // Array of UI text elements for previews
+    public Image[] nextTetrominoImages;
     private Tetromino[] nextTetrominos;
-
-
-   
-
-
-public void Initialize(Board board, Vector3Int position, TetrominoData data, Tetromino[] nextTetrominos)
-{
+    public void Initialize(Board board, Vector3Int position, TetrominoData data, Tetromino[] nextTetrominos)
+    {
         // Set the stepDelay to the value of the last dropped piece
         this.data = data;
         this.board = board;
@@ -52,7 +48,6 @@ public void Initialize(Board board, Vector3Int position, TetrominoData data, Tet
         lockTime = 0f;
 
         this.tag = "Board";
-        this.nextTetrominos = nextTetrominos;
 
         if (cells == null)
         {
@@ -64,25 +59,9 @@ public void Initialize(Board board, Vector3Int position, TetrominoData data, Tet
             cells[i] = (Vector3Int)data.cells[i];
         }
 
-        UpdateNextTetrominoDisplay();
-
-        // Update previews for the next three tetrominos
-        if (nextTetrominoText.Length > 0)
-        {
-            nextTetrominoText[0].text = " " + board.GetNextTetromino();
-        }
-
-        if (nextTetrominoText.Length > 1)
-        {
-            nextTetrominoText[1].text = " " + board.GetNextTetromino();
-        }
-
-        if (nextTetrominoText.Length > 2)
-        {
-            nextTetrominoText[2].text = " " + board.GetNextTetromino();
-        }
+        this.nextTetrominos = nextTetrominos;
+        UpdateNextTetrominoDisplay(nextTetrominos);
     }
-
 
 
     struct Inputs
@@ -240,7 +219,6 @@ public void Initialize(Board board, Vector3Int position, TetrominoData data, Tet
         // Ensure stepDelay doesn't go below a minimum value
         stepDelay = Mathf.Max(stepDelay, 0.1f); // Adjust the minimum value as needed
     }
-
     private IEnumerator ShakeBlocks()
     {
         float shakeDuration = 0.3f;
@@ -376,26 +354,25 @@ public void Initialize(Board board, Vector3Int position, TetrominoData data, Tet
         }
     }
 
-    private void UpdateNextTetrominoDisplay()
+    private void UpdateNextTetrominoDisplay(Tetromino[] upcomingTetrominos)
     {
-        if (nextTetrominoText != null)
+        if (TetrominoSpriteManager.Instance == null || TetrominoSpriteManager.Instance.tetrominoSprites == null)
         {
-            List<string> nextTetrominos = board.GetNextTetrominoTexts(); // Use the correct method
+            Debug.LogError("TetrominoSpriteManager is not initialized.");
+            return;
+        }
 
-            for (int i = 0; i < nextTetrominoText.Length; i++)
+        for (int i = 0; i < nextTetrominoImages.Length; i++)
+        {
+            if (i < upcomingTetrominos.Length)
             {
-                if (i < nextTetrominos.Count)
-                {
-                    nextTetrominoText[i].text = " " + nextTetrominos[i];
-                }
-                else
-                {
-                    // If there are fewer next tetrominos than available Text components, clear the text
-                    nextTetrominoText[i].text = "";
-                }
+                nextTetrominoImages[i].sprite = TetrominoSpriteManager.Instance.tetrominoSprites[upcomingTetrominos[i]];
+            }
+            else
+            {
+                nextTetrominoImages[i].sprite = null;
             }
         }
     }
 
 }
-

@@ -44,6 +44,8 @@ public class Board : Actor
     private Tetromino secondNextTetromino;
     private Tetromino thirdNextTetromino;
 
+    private Queue<Tetromino> upcomingTetrominos = new Queue<Tetromino>();
+
     public RectInt Bounds
     {
         get
@@ -66,26 +68,32 @@ public class Board : Actor
 
     private void Start()
     {
+        InitializeUpcomingTetrominos(); // Initialize the upcoming tetrominos
         SpawnPiece();
-        SetNextTetromino(); // Set the initial next tetromino
     }
 
 
     public void SpawnPiece()
     {
-        TetrominoData data = tetrominoes[(int)nextTetromino]; // Use the next tetromino
-        activePiece.Initialize(this, spawnPosition, data, SetNextTetromino());
+        // Dequeue the next Tetromino
+        TetrominoData data = tetrominoes[(int)upcomingTetrominos.Dequeue()];
+
+        // Enqueue a new random Tetromino before passing the array
+        upcomingTetrominos.Enqueue(GetRandomTetromino());
+
+        // Now pass the upcoming Tetrominos including the newly enqueued one
+        activePiece.Initialize(this, spawnPosition, data, upcomingTetrominos.ToArray());
 
         if (IsValidPosition(activePiece, spawnPosition))
         {
             Set(activePiece);
-            SetNextTetromino(); // Set the next next tetromino after spawning the current one
         }
         else
         {
             GameOver();
         }
     }
+
 
     public void GameOver()
     {
@@ -283,4 +291,14 @@ public class Board : Actor
             }
         }
     }
+
+    private void InitializeUpcomingTetrominos()
+    {
+        upcomingTetrominos.Clear();
+        for (int i = 0; i < 3; i++)
+        {
+            upcomingTetrominos.Enqueue(GetRandomTetromino());
+        }
+    }
+
 }
